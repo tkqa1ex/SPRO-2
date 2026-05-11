@@ -1,7 +1,7 @@
 # SPRO-2: Motor Control & Generator Project
 
 ## 🟦 Project Overview
-This repository contains the hardware designs and firmware for our university semester project (SPRO-2). The goal of the project is to design and implement a motor control system featuring a custom PCB stack for power management, sensing, and signal generation.
+This repository contains the hardware designs and firmware for our university semester project (SPRO-2).
 
 ---
 
@@ -20,14 +20,14 @@ The firmware will handle the motor control algorithms, sensor data acquisition, 
 ---
 
 ## 🛠 Tech Stack
-* **PCB Design:** KiCad 8.0
-* **Firmware:** C++ / Arduino / ESP32 (Modify as needed)
-* **Documentation:** Markdown & LaTeX
+* **PCB Design:** KiCad 10.0
+* **Firmware:** C / Arduino
+* **Documentation:** LaTeX
 
 ---
 
 ## 👥 Team Members
-* **Alexander (tkqa1ex)** - Hardware Design / Lead
+* **Alexander (tkqa1ex)**
 * [Name 2] - [Role]
 * [Name 3] - [Role]
 

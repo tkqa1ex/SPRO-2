@@ -28,7 +28,7 @@ The firmware will handle the motor control algorithms, sensor data acquisition, 
 
 ## 👥 Team Members
 * **Alexander (tkqa1ex)**
-* [Name 2] - [Role]
+* **David (floppy)**
 * [Name 3] - [Role]
 
 ---

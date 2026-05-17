@@ -508,7 +508,7 @@
     "last_paths": {
       "idf": "",
       "netlist": "",
-      "plot": "./",
+      "plot": "",
       "specctra_dsn": "",
       "vrml": ""
     },
@@ -662,13 +662,13 @@
         "uuid": "954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
       }
     ],
-    "used_designators": "D1-2",
+    "used_designators": "D1-2,C1,Q2-6",
     "variants": []
   },
   "sheets": [
     [
       "954fb3ca-5c85-4f3f-aa7c-9db296f5dd93",
-      "small_parts_pcb"
+      "generator-board"
     ]
   ],
   "text_variables": {},

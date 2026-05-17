@@ -1,2 +1,25 @@
+# KiCad main files (KEEP)
+*.kicad_sch
+*.kicad_pcb
+*.kicad_pro
+
+# KiCad local/temp files (IGNORE)
+*.kicad_prl
+*.lck
+~*.kicad_*
+
+# History folders (IGNORE)
+.history/
+.vscode/
+.idea/
+
+# Backups
+*-backups/
+*.zip
+
+# OS junk
 .DS_Store
+Thumbs.db.DS_Store
 **/ .DS_Store
+
+.history/

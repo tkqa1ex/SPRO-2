@@ -553,6 +553,341 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Custom:NMOS_GDS"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q6"
+				(at 6.096 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "NMOS_GDS"
+				(at 8.89 0 90)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+				(at 5.08 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_MOSFETs"
+				(at 0 -12.7 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "N-MOSFET transistor, drain/source/gate"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Device" "NMOS"
+				(at 0 -17.145 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Type" "VDMOS"
+				(at 0 -19.05 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Pins" "1=G 2=D 3=S"
+				(at 0 -15.24 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "transistor NMOS N-MOS N-MOSFET simulation"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "NMOS_GDS_0_1"
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "NMOS_GDS_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:C"
 			(pin_numbers
 				(hide yes)
@@ -1596,342 +1931,6 @@
 						)
 					)
 					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Simulation_SPICE:NMOS"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "Q"
-				(at 5.08 1.27 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "NMOS"
-				(at 5.08 -1.27 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_MOSFETs"
-				(at 0 -12.7 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "N-MOSFET transistor, drain/source/gate"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Sim.Device" "NMOS"
-				(at 0 -17.145 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Sim.Type" "VDMOS"
-				(at 0 -19.05 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Sim.Pins" "1=D 2=G 3=S"
-				(at 0 -15.24 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "transistor NMOS N-MOS N-MOSFET simulation"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "NMOS_0_1"
-				(polyline
-					(pts
-						(xy 0.254 1.905) (xy 0.254 -1.905)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.254 0) (xy -2.54 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 2.286) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 0.508) (xy 0.762 -0.508)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -1.27) (xy 0.762 -2.286)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 1.651 0)
-					(radius 2.794)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 2.54) (xy 2.54 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.54 1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 2.54 -1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "NMOS_1_1"
-				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(name "D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "G"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4099,7 +4098,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 125.73 87.122 90)
 			(hide yes)
 			(show_name no)
@@ -4139,7 +4138,7 @@
 			(uuid "8dcada34-a35d-42a8-8183-707e40085890")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R11")
 					(unit 1)
@@ -4219,7 +4218,7 @@
 			(uuid "0b755943-3c64-4b36-ac73-f9b4ea160b5a")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "C2")
 					(unit 1)
@@ -4298,9 +4297,126 @@
 			(uuid "f260b0b9-75e7-46a8-bc76-bb4e525ef4a2")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Custom:NMOS_GDS")
+		(at 144.78 96.52 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1598908f-3a96-414f-adcd-0bb4b8cc89e0")
+		(property "Reference" "Q5"
+			(at 144.78 90.17 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NMOS_GDS"
+			(at 144.78 87.63 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+			(at 142.24 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_MOSFETs"
+			(at 157.48 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "N-MOSFET transistor, drain/source/gate"
+			(at 144.78 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "NMOS"
+			(at 161.925 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" "VDMOS"
+			(at 163.83 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=D 3=S"
+			(at 160.02 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "b1a4c3c4-b6a8-4cf2-bdf1-6926a07c8b4c")
+		)
+		(pin "1"
+			(uuid "009614eb-88da-4318-bb09-4b43a95fb962")
+		)
+		(pin "3"
+			(uuid "51949e1b-d627-46de-b754-8c0c9c8ec4c9")
+		)
+		(instances
+			(project "generator-board"
+				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
+					(reference "Q5")
 					(unit 1)
 				)
 			)
@@ -4340,7 +4456,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 132.842 138.43 90)
 			(hide yes)
 			(show_name no)
@@ -4380,7 +4496,7 @@
 			(uuid "d16cff15-2ce4-4675-bfba-05f46b337279")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R18")
 					(unit 1)
@@ -4496,125 +4612,9 @@
 			(uuid "e5c32914-692a-4275-b5e7-a4de684b873e")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "Q1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Simulation_SPICE:NMOS")
-		(at 125.73 106.68 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "1aa6085b-ebc4-4de6-a2bd-beaeda94b64b")
-		(property "Reference" "Q7"
-			(at 125.984 100.584 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "NMOS"
-			(at 125.73 97.79 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
-			(at 123.19 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_MOSFETs"
-			(at 138.43 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "N-MOSFET transistor, drain/source/gate"
-			(at 125.73 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "NMOS"
-			(at 142.875 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Type" "VDMOS"
-			(at 144.78 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=D 2=G 3=S"
-			(at 140.97 106.68 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "1f8040e5-4b7f-445d-a28f-b8ea81a98dac")
-		)
-		(pin "2"
-			(uuid "036b4625-f10e-4376-8db4-db8ebf64bbaf")
-		)
-		(pin "1"
-			(uuid "8a15af56-92ab-4a39-b857-6ccfdfa47b59")
-		)
-		(instances
-			(project "small_parts_pcb"
-				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
-					(reference "Q7")
 					(unit 1)
 				)
 			)
@@ -4690,7 +4690,7 @@
 			(uuid "3049f451-7431-4ba4-a190-16bb537d38ad")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR08")
 					(unit 1)
@@ -4699,8 +4699,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Simulation_SPICE:NMOS")
-		(at 144.78 96.52 90)
+		(lib_id "Custom:NMOS_GDS")
+		(at 116.84 111.76 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4708,9 +4708,10 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "22de945d-c70f-49c6-ab08-bcce02f3f5dc")
-		(property "Reference" "Q9"
-			(at 144.78 90.932 90)
+		(fields_autoplaced yes)
+		(uuid "1eb7bf9f-223a-4bb5-ad6c-40450844c94c")
+		(property "Reference" "Q2"
+			(at 116.84 105.41 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4719,8 +4720,8 @@
 				)
 			)
 		)
-		(property "Value" "NMOS"
-			(at 144.78 87.63 90)
+		(property "Value" "NMOS_GDS"
+			(at 116.84 102.87 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4731,7 +4732,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
-			(at 142.24 91.44 0)
+			(at 114.3 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4742,7 +4743,7 @@
 			)
 		)
 		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_MOSFETs"
-			(at 157.48 96.52 0)
+			(at 129.54 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4753,7 +4754,7 @@
 			)
 		)
 		(property "Description" "N-MOSFET transistor, drain/source/gate"
-			(at 144.78 96.52 0)
+			(at 116.84 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4764,7 +4765,7 @@
 			)
 		)
 		(property "Sim.Device" "NMOS"
-			(at 161.925 96.52 0)
+			(at 133.985 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4775,7 +4776,7 @@
 			)
 		)
 		(property "Sim.Type" "VDMOS"
-			(at 163.83 96.52 0)
+			(at 135.89 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4785,8 +4786,8 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=D 2=G 3=S"
-			(at 160.02 96.52 0)
+		(property "Sim.Pins" "1=G 2=D 3=S"
+			(at 132.08 111.76 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4795,20 +4796,20 @@
 					(size 1.27 1.27)
 				)
 			)
-		)
-		(pin "3"
-			(uuid "bc83a2ef-7db4-4623-a514-316fa8bc9d4f")
 		)
 		(pin "2"
-			(uuid "c37f7307-d0a1-4662-9f62-aa54b6ffbda9")
+			(uuid "0ccc0687-9882-4c71-be3f-5b847288e154")
 		)
 		(pin "1"
-			(uuid "0d97c306-b869-4541-8525-a5ebaa38faef")
+			(uuid "ef10f71c-6310-4d41-bacd-b962cd9133a5")
+		)
+		(pin "3"
+			(uuid "d21a6c46-3f0a-4b5d-aba5-5b90f4954f6a")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
-					(reference "Q9")
+					(reference "Q2")
 					(unit 1)
 				)
 			)
@@ -4883,7 +4884,7 @@
 			(uuid "c2c02a72-b6b7-4695-8c72-66ba8fd13f2a")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR05")
 					(unit 1)
@@ -4976,7 +4977,7 @@
 			(uuid "dcc07738-81c4-4755-a760-e4b2c8edf0f1")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "U2")
 					(unit 1)
@@ -5018,7 +5019,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 115.062 123.19 90)
 			(hide yes)
 			(show_name no)
@@ -5058,7 +5059,7 @@
 			(uuid "cc67a55d-3e8e-4ea4-abe6-330dacdaf854")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R6")
 					(unit 1)
@@ -5100,7 +5101,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 115.062 138.43 90)
 			(hide yes)
 			(show_name no)
@@ -5140,7 +5141,7 @@
 			(uuid "d1413239-ef3a-484e-9c1b-19ba5b91fd21")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R16")
 					(unit 1)
@@ -5182,7 +5183,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 101.092 58.42 90)
 			(hide yes)
 			(show_name no)
@@ -5222,7 +5223,7 @@
 			(uuid "973de169-60cc-4016-b4b7-be4144b3c454")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R1")
 					(unit 1)
@@ -5263,7 +5264,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 110.49 97.282 90)
 			(hide yes)
 			(show_name no)
@@ -5303,7 +5304,7 @@
 			(uuid "39b1fc2c-0a7b-41cf-b254-940049f46f61")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R13")
 					(unit 1)
@@ -5385,7 +5386,7 @@
 			(uuid "ea5690e6-d4ff-4b8d-a2e7-0b7d4061b86e")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "J2")
 					(unit 1)
@@ -5463,7 +5464,7 @@
 			(uuid "ebda086d-56e2-49ba-ad78-ad0b7c7670e2")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR015")
 					(unit 1)
@@ -5544,7 +5545,7 @@
 			(uuid "ad47a435-48a5-42c7-a3b1-4bbca38ecdd5")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "C4")
 					(unit 1)
@@ -5585,7 +5586,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 104.14 102.362 90)
 			(hide yes)
 			(show_name no)
@@ -5625,7 +5626,7 @@
 			(uuid "4dad19b1-31b1-4820-83ed-91db8e73a53d")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R14")
 					(unit 1)
@@ -5667,7 +5668,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 153.162 138.43 90)
 			(hide yes)
 			(show_name no)
@@ -5707,7 +5708,7 @@
 			(uuid "25b895e0-72ed-409d-8567-57b2453d949e")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R20")
 					(unit 1)
@@ -5787,7 +5788,7 @@
 			(uuid "feea2c64-e63d-470a-bb87-1bcd33122d29")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR011")
 					(unit 1)
@@ -5817,7 +5818,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5k"
+		(property "Value" "5k1"
 			(at 118.872 96.266 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5828,7 +5829,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 118.11 92.202 90)
 			(hide yes)
 			(show_name no)
@@ -5868,7 +5869,7 @@
 			(uuid "2a1765ab-0a07-411d-9daa-43ac0e6bb5de")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R12")
 					(unit 1)
@@ -5947,7 +5948,7 @@
 			(uuid "76154986-20cd-47c7-9265-2005adbd0d75")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR07")
 					(unit 1)
@@ -6029,7 +6030,7 @@
 			(uuid "f8693651-83a5-411b-91f8-38b5c2936688")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "C3")
 					(unit 1)
@@ -6071,7 +6072,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 143.002 138.43 90)
 			(hide yes)
 			(show_name no)
@@ -6111,7 +6112,7 @@
 			(uuid "9552abce-cd3c-4348-9210-05cec1ff52f7")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R19")
 					(unit 1)
@@ -6188,7 +6189,7 @@
 			(uuid "0f17d5e4-8c3a-467c-8bb8-66c5092f5cf4")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR014")
 					(unit 1)
@@ -6197,8 +6198,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Simulation_SPICE:NMOS")
-		(at 116.84 111.76 90)
+		(lib_id "Custom:NMOS_GDS")
+		(at 125.73 106.68 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6206,9 +6207,10 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "8cc03e85-d88f-4e22-81e2-d2c04fbc66f8")
-		(property "Reference" "Q6"
-			(at 116.84 105.664 90)
+		(fields_autoplaced yes)
+		(uuid "8deb9583-1484-4e98-80a5-ba15534686c3")
+		(property "Reference" "Q3"
+			(at 125.73 100.33 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6217,8 +6219,8 @@
 				)
 			)
 		)
-		(property "Value" "NMOS"
-			(at 116.84 102.87 90)
+		(property "Value" "NMOS_GDS"
+			(at 125.73 97.79 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6229,7 +6231,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
-			(at 114.3 106.68 0)
+			(at 123.19 101.6 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6240,7 +6242,7 @@
 			)
 		)
 		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_MOSFETs"
-			(at 129.54 111.76 0)
+			(at 138.43 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6251,7 +6253,7 @@
 			)
 		)
 		(property "Description" "N-MOSFET transistor, drain/source/gate"
-			(at 116.84 111.76 0)
+			(at 125.73 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6262,7 +6264,7 @@
 			)
 		)
 		(property "Sim.Device" "NMOS"
-			(at 133.985 111.76 0)
+			(at 142.875 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6273,7 +6275,7 @@
 			)
 		)
 		(property "Sim.Type" "VDMOS"
-			(at 135.89 111.76 0)
+			(at 144.78 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6283,8 +6285,8 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=D 2=G 3=S"
-			(at 132.08 111.76 0)
+		(property "Sim.Pins" "1=G 2=D 3=S"
+			(at 140.97 106.68 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6293,18 +6295,135 @@
 					(size 1.27 1.27)
 				)
 			)
-		)
-		(pin "3"
-			(uuid "b91a6c38-bd48-4e86-bb30-7b9df0743c56")
 		)
 		(pin "2"
-			(uuid "128c7fee-ee4d-48f8-911a-6b19cd1f05b1")
+			(uuid "198f0fe0-b64a-4f67-a84b-e45d5a5f89d8")
 		)
 		(pin "1"
-			(uuid "4b03b83c-924d-42a0-a5eb-a1d44f4026a1")
+			(uuid "15f35860-440a-4ef2-9e3e-0f45f3134ec3")
+		)
+		(pin "3"
+			(uuid "646e9f2c-9676-498b-a419-63960d5e19d8")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
+				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
+					(reference "Q3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Custom:NMOS_GDS")
+		(at 154.94 91.44 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9080951e-7151-4d9e-81b7-c229e1c19b83")
+		(property "Reference" "Q6"
+			(at 154.94 85.09 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NMOS_GDS"
+			(at 154.94 82.55 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+			(at 152.4 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_MOSFETs"
+			(at 167.64 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "N-MOSFET transistor, drain/source/gate"
+			(at 154.94 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "NMOS"
+			(at 172.085 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" "VDMOS"
+			(at 173.99 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=D 3=S"
+			(at 170.18 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "47e15439-8fbe-4bb4-83c0-c0ce2b17136a")
+		)
+		(pin "1"
+			(uuid "7ffd73de-be03-4de4-a87d-09d6f72ba485")
+		)
+		(pin "3"
+			(uuid "fcf69406-eb37-4109-976b-a17ca7bc4d19")
+		)
+		(instances
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "Q6")
 					(unit 1)
@@ -6385,7 +6504,7 @@
 			(uuid "b391de80-6346-4327-851b-19a56a843704")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "shunt_R1")
 					(unit 1)
@@ -6485,7 +6604,7 @@
 			(uuid "2c92ece1-2438-4046-8577-316463e6a669")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "U3")
 					(unit 1)
@@ -6589,7 +6708,7 @@
 			(uuid "0f758d95-0ace-4659-90e5-35dec40b4849")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "D1")
 					(unit 1)
@@ -6631,7 +6750,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 153.162 123.19 90)
 			(hide yes)
 			(show_name no)
@@ -6671,9 +6790,126 @@
 			(uuid "85d727a3-58ef-4834-b6a8-5fbfa307dac7")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Custom:NMOS_GDS")
+		(at 134.62 101.6 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "aa31b18a-16a5-447c-8b3f-fb29c3be0279")
+		(property "Reference" "Q4"
+			(at 134.62 95.25 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "NMOS_GDS"
+			(at 134.62 92.71 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
+			(at 132.08 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_MOSFETs"
+			(at 147.32 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "N-MOSFET transistor, drain/source/gate"
+			(at 134.62 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "NMOS"
+			(at 151.765 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" "VDMOS"
+			(at 153.67 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=G 2=D 3=S"
+			(at 149.86 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "8348e65a-b5e3-4572-a21d-15ee64aa69eb")
+		)
+		(pin "1"
+			(uuid "074f1fa3-aed2-4719-8bbf-74a85f89eef7")
+		)
+		(pin "3"
+			(uuid "1b65f468-d165-4b22-a55e-318b65bfe237")
+		)
+		(instances
+			(project "generator-board"
+				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
+					(reference "Q4")
 					(unit 1)
 				)
 			)
@@ -6713,7 +6949,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 123.952 138.43 90)
 			(hide yes)
 			(show_name no)
@@ -6753,7 +6989,7 @@
 			(uuid "07571ed3-be7d-4768-923c-620fca1e8fd6")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R17")
 					(unit 1)
@@ -6831,7 +7067,7 @@
 			(uuid "d84f7fa8-c78a-4c5c-8de4-c06a927d12e5")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR09")
 					(unit 1)
@@ -6873,7 +7109,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 143.002 123.19 90)
 			(hide yes)
 			(show_name no)
@@ -6913,7 +7149,7 @@
 			(uuid "1ae062e3-49a2-4479-a29f-d20a918e2693")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R9")
 					(unit 1)
@@ -6955,7 +7191,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 132.842 123.19 90)
 			(hide yes)
 			(show_name no)
@@ -6995,7 +7231,7 @@
 			(uuid "13e0ac8e-5295-4b5e-ad7e-3a9d2f46eb81")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R8")
 					(unit 1)
@@ -7037,7 +7273,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 123.952 123.19 90)
 			(hide yes)
 			(show_name no)
@@ -7077,7 +7313,7 @@
 			(uuid "6f675ad2-8835-48ee-bda1-30259bb5eff5")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R7")
 					(unit 1)
@@ -7155,7 +7391,7 @@
 			(uuid "1df66194-d785-488d-b3a3-c832809c1374")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR012")
 					(unit 1)
@@ -7233,7 +7469,7 @@
 			(uuid "add4f130-fc35-4b63-9961-5f14c5448df7")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR01")
 					(unit 1)
@@ -7312,124 +7548,9 @@
 			(uuid "57f78945-41c6-42c4-a9e6-328bb5ecb870")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR06")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Simulation_SPICE:NMOS")
-		(at 154.94 91.44 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "e37f02cc-1de2-4229-98f0-4ecfafcd5ba4")
-		(property "Reference" "Q10"
-			(at 154.94 85.09 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "NMOS"
-			(at 154.94 82.55 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
-			(at 152.4 86.36 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_MOSFETs"
-			(at 167.64 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "N-MOSFET transistor, drain/source/gate"
-			(at 154.94 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "NMOS"
-			(at 172.085 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Type" "VDMOS"
-			(at 173.99 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=D 2=G 3=S"
-			(at 170.18 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "36acdf98-1b26-46ee-a1ac-0c67f4aaeff1")
-		)
-		(pin "2"
-			(uuid "45c19645-e8d5-413b-b46e-93ce29554e25")
-		)
-		(pin "1"
-			(uuid "463c100e-50af-4c3a-b1eb-c41eb072b8de")
-		)
-		(instances
-			(project "small_parts_pcb"
-				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
-					(reference "Q10")
 					(unit 1)
 				)
 			)
@@ -7505,7 +7626,7 @@
 			(uuid "2294ac6e-b74c-4a68-9928-ab1aa73278f5")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR010")
 					(unit 1)
@@ -7582,7 +7703,7 @@
 			(uuid "0b71819b-037d-45bc-81b9-65814d1f775b")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR013")
 					(unit 1)
@@ -7685,7 +7806,7 @@
 			(uuid "78a512c2-5681-4e99-9e91-d356e6f396a9")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "J1")
 					(unit 1)
@@ -7763,7 +7884,7 @@
 			(uuid "bd1c3f58-3bb3-46ea-8754-a90f0c5656ea")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR03")
 					(unit 1)
@@ -7804,7 +7925,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 99.06 107.442 90)
 			(hide yes)
 			(show_name no)
@@ -7844,7 +7965,7 @@
 			(uuid "dbb3cec9-df5b-4827-9682-41420fe1ea0f")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "R15")
 					(unit 1)
@@ -7923,125 +8044,9 @@
 			(uuid "18ad71d3-a661-42c8-82eb-090f7edc53d3")
 		)
 		(instances
-			(project "small_parts_pcb"
+			(project "generator-board"
 				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
 					(reference "#PWR04")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Simulation_SPICE:NMOS")
-		(at 134.62 101.6 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "f80ba857-6ad8-41fa-acc5-af193d615689")
-		(property "Reference" "Q8"
-			(at 134.62 95.504 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "NMOS"
-			(at 134.62 92.71 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
-			(at 132.08 96.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_MOSFETs"
-			(at 147.32 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "N-MOSFET transistor, drain/source/gate"
-			(at 134.62 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "NMOS"
-			(at 151.765 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Type" "VDMOS"
-			(at 153.67 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=D 2=G 3=S"
-			(at 149.86 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "d029ef2a-fdfc-4f9f-9bd7-b05107856b19")
-		)
-		(pin "2"
-			(uuid "d80f5a11-fe95-4178-b017-1d085d0733aa")
-		)
-		(pin "1"
-			(uuid "045dc24d-1c38-49f5-9243-b012baeb1b02")
-		)
-		(instances
-			(project "small_parts_pcb"
-				(path "/954fb3ca-5c85-4f3f-aa7c-9db296f5dd93"
-					(reference "Q8")
 					(unit 1)
 				)
 			)

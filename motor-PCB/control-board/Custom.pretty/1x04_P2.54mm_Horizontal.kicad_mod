@@ -1,0 +1,123 @@
+(footprint "1x04_P2.54mm_Horizontal"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Terminal Block CUI TB007-508-02, 2 pins, pitch 5.08mm, size 10.8x10.2mm, drill diameter 1.6mm, pad diameter 2.4mm, https://www.cuidevices.com/product/resource/tb007-508.pdf")
+	(tags "THT Terminal Block CUI TB007-508-02 pitch 5.08mm size 10.8x10.2mm drill 1.6mm pad 2.4mm")
+	(property "Reference" "REF**"
+		(at 2.84 -6.02 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "7250a038-04fe-4ece-8595-3e6f02d1d496")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "1x04_P2.54mm"
+		(at 2 5.75 0)
+		(layer "F.Fab")
+		(uuid "7b0df980-2965-4bf2-bfeb-f71b8784ccd7")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "52a097fe-576c-449b-9c1b-4a2c123b088a")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "cdef4292-1c33-465e-b076-739918046a09")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "KiLib_Generator" "terminal_block/CUI"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "e19cbaca-d3b4-4e6d-9550-7ac104a89997")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start -1.75 -1.75)
+		(end 9.5 1.75)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "7a8a2e6e-f876-47ff-9329-a9a5ecf620c8")
+	)
+	(pad "1" thru_hole roundrect
+		(at 0 0)
+		(size 1.7018 1.7018)
+		(drill 1.016)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(roundrect_rratio 0.104167)
+		(uuid "06a3b266-c9eb-43e6-9d6b-d60af3e49df4")
+	)
+	(pad "2" thru_hole circle
+		(at 2.54 0)
+		(size 1.7018 1.7018)
+		(drill 1.016)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a92769e7-5d56-4e19-a70b-d9b12051c9e9")
+	)
+	(pad "3" thru_hole circle
+		(at 5.08 0)
+		(size 1.7018 1.7018)
+		(drill 1.016)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "1bce589d-76eb-41b2-b7e8-ef26a22e5c79")
+	)
+	(pad "4" thru_hole circle
+		(at 7.62 0)
+		(size 1.7018 1.7018)
+		(drill 1.016)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "6eb32272-db1a-4ec3-a311-ea282130b15a")
+	)
+	(embedded_fonts no)
+	(model "${KICAD10_3DMODEL_DIR}/TerminalBlock_CUI.3dshapes/TerminalBlock_CUI_TB007-508-02_1x02_P5.08mm_Horizontal.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

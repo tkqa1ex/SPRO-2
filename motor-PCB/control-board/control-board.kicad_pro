@@ -472,7 +472,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "motor-pcb.kicad_pro",
+    "filename": "control-board.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -627,18 +627,18 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "motor-pcb.kicad_sch",
-        "name": "Root",
+        "filename": "control-board.kicad_sch",
+        "name": "control-board",
         "uuid": "c1444e16-679c-4618-8751-62edd8517e7c"
       }
     ],
-    "used_designators": "U5",
+    "used_designators": "",
     "variants": []
   },
   "sheets": [
     [
       "c1444e16-679c-4618-8751-62edd8517e7c",
-      "Root"
+      "control-board"
     ]
   ],
   "text_variables": {},

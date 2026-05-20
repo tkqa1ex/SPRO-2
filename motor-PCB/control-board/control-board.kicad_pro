@@ -632,13 +632,13 @@
         "uuid": "c1444e16-679c-4618-8751-62edd8517e7c"
       }
     ],
-    "used_designators": "",
+    "used_designators": "#PWR24-25,U5",
     "variants": []
   },
   "sheets": [
     [
       "c1444e16-679c-4618-8751-62edd8517e7c",
-      "control-board"
+      "Root"
     ]
   ],
   "text_variables": {},

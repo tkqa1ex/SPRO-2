@@ -9,6 +9,13 @@ typedef enum { // efectiv creezi un tip nou, aaa si valoarea variabilei e ordine
     TMP117_CONTROL = (uint8_t) 0b1001000
 }SLAVE_ADDRESS;
 
+
+#define ARDUINO_FREQUENCY (16000000.0f)
+#define TIME_TICK (1.0 / 16000000.0)
+#define MAXIMUM_u32 (uint64_t)4294967295
+#define MAXIMUM_u16 ((uint32_t)65535)
+#define MAXIMUM_u8 ((uint16_t)255)
+
 #define SAMPLING_RATE (uint8_t) 275 // time in ms between measurements
 
 

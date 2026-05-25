@@ -8,12 +8,16 @@
 #include "i2cmaster.h"
 #include "constants.h"
 #include "INA219.h"
-
+#include "TMP117.h"
+#include "optocoupler.h"
 
 volatile uint8_t timer;
 volatile uint8_t take_data;
 
 float bus_voltage_control,bus_voltage_generator,current_control,current_generator;
+float ambiental_temperature_control,ambiental_temperature_generator;
+
+
 
 void get_INA219_CONTROL() {
     bus_voltage_control = GET_BUS_VOLTAGE(INA219_CONTROL) - 0.1; // seems to be overshoot by 0.2V
@@ -24,20 +28,22 @@ void get_INA219_GENERATOR() {
     bus_voltage_generator = GET_BUS_VOLTAGE(INA219_GENERATOR);
     current_generator = GET_CURRENT_GENERATOR();
 }
+
+void get_TMP117_CONTROL() {
+    ambiental_temperature_control = TMP117_readTemperature(TMP117_CONTROL);
+}
+
+void get_TMP117_GENERATOR() {
+    ambiental_temperature_control = TMP117_readTemperature(TMP117_GENERATOR);
+}
+
 // D9 - 0.5
 // D10 - 
 void take_measurement() {
-    cli();
     get_INA219_CONTROL();
     get_INA219_GENERATOR();
     get_TMP117_CONTROL();
     get_TMP117_GENERATOR();
-    printf("For CONTROL: Bus voltage is %.5fV Current is %.5fmA\n",bus_voltage_control,current_control);
-    printf("For GENERATOR: Bus voltage is %.5fV Current is %.5fmA\n \n \n",bus_voltage_generator,current_generator);
-    _delay_ms(500);
-    sei();
-    // get_TMP117_CONTROL();
-    // get_TMP117_GENERATOR();
 }
 
 
@@ -51,6 +57,7 @@ ISR(TIMER2_OVF_vect) {
 
 
 
+
 void init_timer() {
     // SCALAR OF 64, lasts 1ms
     TIMSK2 |= (1 << TOIE2);
@@ -60,10 +67,8 @@ void init_timer() {
 void init_outsiders() {
     INA219_INIT_CONTROL();
     INA219_INIT_GENERATOR();
-    // TMP117_CONTROL_INIT();
-    // TMP117_GENERATOR_INIT();
-
-    // might have to add sth for FAN and HEATING PAD too... :(
+    TMP117_INIT(TMP117_CONTROL);
+    TMP117_INIT(TMP117_GENERATOR);  
     _delay_ms(100); // just to make sure they have the time to update, shuold be much less but we arent rly in a worry :)
 }
 
@@ -75,7 +80,6 @@ void OPEN(pin LOAD) {
 
 void system_init(pin LOAD) {
     sei(); // enable interrupts
-    _delay_ms(500); // give enough time for components to wake up
 
     // debug
     uart_init();
@@ -86,7 +90,8 @@ void system_init(pin LOAD) {
 
     // enable the load
     OPEN(LOAD);
-    _delay_ms(5000);
+    
+    _delay_ms(100); // give enough time for components to wake up and transients to magically disappear
 
     // init sensors
     init_outsiders();    

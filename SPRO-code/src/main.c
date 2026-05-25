@@ -15,37 +15,7 @@ volatile uint8_t timer;
 volatile uint8_t take_data;
 
 float bus_voltage_control,bus_voltage_generator,current_control,current_generator;
-float ambiental_temperature_control,ambiental_temperature_generator;
-
-
-
-void get_INA219_CONTROL() {
-    bus_voltage_control = GET_BUS_VOLTAGE(INA219_CONTROL) - 0.1; // seems to be overshoot by 0.2V
-    current_control = GET_CURRENT_CONTROL();
-}
-
-void get_INA219_GENERATOR() {
-    bus_voltage_generator = GET_BUS_VOLTAGE(INA219_GENERATOR);
-    current_generator = GET_CURRENT_GENERATOR();
-}
-
-void get_TMP117_CONTROL() {
-    ambiental_temperature_control = TMP117_readTemperature(TMP117_CONTROL);
-}
-
-void get_TMP117_GENERATOR() {
-    ambiental_temperature_control = TMP117_readTemperature(TMP117_GENERATOR);
-}
-
-// D9 - 0.5
-// D10 - 
-void take_measurement() {
-    get_INA219_CONTROL();
-    get_INA219_GENERATOR();
-    get_TMP117_CONTROL();
-    get_TMP117_GENERATOR();
-}
-
+float ambiental_temperature_control,ambiental_temperature_generator,rotations_ms;
 
 ISR(TIMER2_OVF_vect) {
     timer++;
@@ -55,13 +25,39 @@ ISR(TIMER2_OVF_vect) {
     }
 }
 
+ISR(TIMER1_OVF_vect) {
+    cnt_timer_overflow++;
+}
 
+void take_measurement();
+void init_timer2();
+void init_outsiders();
+void OPEN(pin LOAD);
+void system_init(pin LOAD);
+void get_TMP117_CONTROL();
+void get_INA219_GENERATOR();
+void get_INA219_CONTROL();
+void get_rotating_speed();
+void sent_data_to_matlab();
 
+int main() {
+    system_init(D9);
+    while (1) {
+        if (take_data) {
+            take_measurement();
+            send_data_to_matlab();
+            take_data = false;
+        }
+    }
+}
 
-void init_timer() {
-    // SCALAR OF 64, lasts 1ms
-    TIMSK2 |= (1 << TOIE2);
-    TCCR2B |= (1 << CS22); 
+void sent_data_to_matlab() {
+    // voltage control, current control, control temp
+    // voltage generator, current generator, gen temp
+    // rpms
+    printf("%f %f %f\n",bus_voltage_control,current_control,ambiental_temperature_control);
+    printf("%f %f %f\n",bus_voltage_generator,current_generator,ambiental_temperature_generator);
+    printf("%f \n",rotations_ms);
 }
 
 void init_outsiders() {
@@ -69,19 +65,49 @@ void init_outsiders() {
     INA219_INIT_GENERATOR();
     TMP117_INIT(TMP117_CONTROL);
     TMP117_INIT(TMP117_GENERATOR);  
-    _delay_ms(100); // just to make sure they have the time to update, shuold be much less but we arent rly in a worry :)
+    optocoupler_init();
+
+    // give enough time for components to wake up and transients to magically disappear
+    // just to make sure they have the time to update, shuold be much less but we arent rly in a worry :)
+    _delay_ms(50); 
 }
 
-void OPEN(pin LOAD) {
-    // open the D9-D13 pin (PB1-5) resistor
-    DDRB |= (1 << (LOAD + 1));
-    PORTB |= (1 << (LOAD + 1));
+void get_INA219_GENERATOR() {
+    bus_voltage_generator = GET_BUS_VOLTAGE(INA219_GENERATOR);
+    current_generator = GET_CURRENT_GENERATOR();
+}
+
+void get_TMP117_GENERATOR() {
+    ambiental_temperature_control = TMP117_readTemperature(TMP117_GENERATOR);
+}
+
+void get_INA219_CONTROL() {
+    bus_voltage_control = GET_BUS_VOLTAGE(INA219_CONTROL); // seems to be overshoot by 0.2V
+    current_control = GET_CURRENT_CONTROL();
+}
+
+void get_rotating_speed() {
+    rotations_ms = SAMPLING_RATE / (1.0 * cnt_edge_changed);
+}
+
+void take_measurement() {
+    get_INA219_CONTROL();
+    get_INA219_GENERATOR();
+    get_TMP117_CONTROL();
+    get_TMP117_GENERATOR();
+    get_rotating_speed();
+}
+
+void init_timer2() {
+    // SCALAR OF 64, lasts 1ms
+    TIMSK2 |= (1 << TOIE2);
+    TCCR2B |= (1 << CS22); 
 }
 
 void system_init(pin LOAD) {
     sei(); // enable interrupts
 
-    // debug
+    // debug + sending to matlab
     uart_init();
     io_redirect();
 
@@ -90,83 +116,19 @@ void system_init(pin LOAD) {
 
     // enable the load
     OPEN(LOAD);
-    
-    _delay_ms(100); // give enough time for components to wake up and transients to magically disappear
 
     // init sensors
     init_outsiders();    
 
     // timer go brrr
-    init_timer();
+    init_timer2();
 }
 
-// current - control -> 
-// voltage - control ->
-// current - generator ->
-// voltage - generator ->
-
-int main() {
-    system_init(D9);
-    while (1) {
-        if (true) {
-            take_measurement();
-            
-            //send_data_to_matlab();
-            take_data = false;
-        }
-    }
+void OPEN(pin LOAD) {
+    // open the D9-D13 pin (PB1-5) resistor
+    DDRB |= (1 << (LOAD + 1));
+    PORTB |= (1 << (LOAD + 1));
 }
-// gonna give like 500ms of pause so components complete their POR phase
-// collect data every 200ms => 5 samples/s
-// could go lower but temp updates only once 125ms
-// INA goes for 12bit even less than a ms
 
 
-/*
-takes aprox 1.5ms after turning on to be usable
-UNFORTUNATELY CANT USE ANYTH THATS FOR ALERT (to create interrupts) BECAUSE OURS IS LEFT FLOATING :(
 
-can write in the eeprom to configure it
-BY DEFAULT IT IS LOCKED: Set Bit 15 of the EEPROM Unlock Register to 1 to Unlock
-                        Write
-                        WAIT 7ms
-                        Read EEPROM_Busy from EEPROM Unlock Register, if busy wait 7ms again
-
-The 8-bit pointer register of the device is used to address a given data register
-    - deci e efectiv un pointer, aici vei da store la adresa registrului dorit
-    - but i mean asa e in general, aici doar iti si spune cum e stocat, aceasi marie cu alta palarie
-
-pag 22: shows reg and their function
-LSB - 7.8125mC
-
-Temp reg -> 0x00
-    LSB - 7.8125mC
-    Following power-up, before first conversion ends it has -256C. Way to check it works!!!!
-
-Config reg -> 0x01
-    bit 13 - DATA_READY FLAG
-    bit 12 - EEPROM BUSY
-    bit 10-11 -> conversion mode (again continuous cause here it rly doesnt matter as much)
-    bit 7-9 -> time for conversion (dont need to be 100% accurate so one reading is enough) -> 125ms is fine
-    bit 5-6 -> AVG = 00 (no average, one sample is enough)
-    bit 2-> DATA_READY
-
-High Limit Reg -> 0x02
-    LSB - 7.8125mC
-
-Low Limit Reg -> 0x03
-    same LSB
-
-Temp Offset Reg -> 0x07
-    dont need to touch it, its used to give more accurate readings but its very primitive, just offset the result by a value
-    we dont need that much accuracy so should be fine, but if we notice it usually gives more (or less, maybe could make it less caus the motor heats harder) we can use this
-
-EEPROM Unlock Register -> 0x04
-    bit 15: EEPROM UNLOCK bit
-    bit 14: EEPROM BUSY
-
-3 EEPROM registers in case we need
-+ also in EEPROM ->
-DEVICE ID REG (to ensure again proper communication) it is in the eeprom -> 0x0F
-
-*/

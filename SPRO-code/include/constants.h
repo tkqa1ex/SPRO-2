@@ -15,7 +15,6 @@ typedef enum { // efectiv creezi un tip nou, aaa si valoarea variabilei e ordine
 #define MAXIMUM_u32 (uint64_t)4294967295
 #define MAXIMUM_u16 ((uint32_t)65535)
 #define MAXIMUM_u8 ((uint16_t)255)
-
 #define SAMPLING_RATE (uint8_t) 275 // time in ms between measurements
 
 

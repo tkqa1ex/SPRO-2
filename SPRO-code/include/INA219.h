@@ -26,11 +26,9 @@ typedef enum {
    128 sample averaging
    Continuous shunt + bus mode
 */
-#define INA219_CONTROL_CONFIG_REG_R ((uint8_t)0x07)
-#define INA219_CONTROL_CONFIG_REG_L ((uint8_t)0xFF)
-
-#define INA219_CONTROL_CALIB_REG_R ((uint8_t)0x80)
-#define INA219_CONTROL_CALIB_REG_L ((uint8_t)0x00)
+#define INA219_CONTROL_CONFIG_REG_R ((uint8_t)0x27)
+#define INA219_CONTROL_CONFIG_REG_L ((uint8_t)0x77)
+#define SHUNT_R_CONTROL 0.025f
 
 /* =========================
    Configuration Register Generator 
@@ -40,11 +38,9 @@ typedef enum {
    128 sample averaging
    Continuous shunt + bus mode
 */
-#define INA219_GENERATOR_CONFIG_REG_R ((uint8_t)0x37)
-#define INA219_GENERATOR_CONFIG_REG_L ((uint8_t)0xFF)
-
-#define INA219_GENERATOR_CALIB_REG_R ((uint8_t)0x20)
-#define INA219_GENERATOR_CALIB_REG_L ((uint8_t)0x00)
+#define INA219_GENERATOR_CONFIG_REG_R ((uint8_t)0x3F)
+#define INA219_GENERATOR_CONFIG_REG_L ((uint8_t)0x77)
+#define SHUNT_R_GENERATOR 1.0f
 
 /* =========================
    Conversion Constants
@@ -53,8 +49,7 @@ typedef enum {
     and its simpler for the chip to avoid float points)
 */
 #define LSB_BV                4000.0f     // 4mV = 4000uV
-#define LSB_CURRENT_CONTROL   50 // 45.776uA per bit
-#define LSB_CURRENT_GENERATOR 4 // 3.606uA per bit 
+#define LSB_SHUNT               10.0f // 10uV
 
 /* =========================
    Function Prototypes
@@ -71,7 +66,8 @@ float GET_BUS_VOLTAGE(SLAVE_ADDRESS);
 void GET_INA219_REG(SLAVE_ADDRESS,register_address);
 #endif /* INA219_H_ */
 
-/*Configuration Reg: 0x00
+/*
+Configuration Reg: 0x00
     13 bit: BRNG - (bus voltage) set to 0 (0-16V)
     11-12 bit: Gain and Range settings (the bigger gain the better)
     collect data every 200ms => 5 times a s (altough IN219 can do every 70ms but 100ms to be sure) -> ADC4-1 = 0b1111

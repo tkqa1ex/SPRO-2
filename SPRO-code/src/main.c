@@ -17,6 +17,18 @@ volatile uint8_t take_data;
 float bus_voltage_control,bus_voltage_generator,current_control,current_generator;
 float ambiental_temperature_control,ambiental_temperature_generator,rotations_ms;
 
+void take_measurement();
+void init_timer2();
+void init_outsiders();
+void OPEN(pin LOAD);
+void system_init(pin LOAD);
+void get_TMP117_CONTROL();
+void get_TMP117_GENERATOR();
+void get_INA219_GENERATOR();
+void get_INA219_CONTROL();
+void get_rotating_speed();
+void send_data_to_matlab();
+
 ISR(TIMER2_OVF_vect) {
     timer++;
     if (timer == SAMPLING_RATE) {
@@ -29,17 +41,6 @@ ISR(TIMER1_OVF_vect) {
     cnt_timer_overflow++;
 }
 
-void take_measurement();
-void init_timer2();
-void init_outsiders();
-void OPEN(pin LOAD);
-void system_init(pin LOAD);
-void get_TMP117_CONTROL();
-void get_INA219_GENERATOR();
-void get_INA219_CONTROL();
-void get_rotating_speed();
-void sent_data_to_matlab();
-
 int main() {
     system_init(D9);
     while (1) {
@@ -47,17 +48,18 @@ int main() {
             take_measurement();
             send_data_to_matlab();
             take_data = false;
+            _delay_ms(500);
         }
     }
 }
 
-void sent_data_to_matlab() {
+void send_data_to_matlab() {
     // voltage control, current control, control temp
     // voltage generator, current generator, gen temp
     // rpms
-    printf("%f %f %f\n",bus_voltage_control,current_control,ambiental_temperature_control);
-    printf("%f %f %f\n",bus_voltage_generator,current_generator,ambiental_temperature_generator);
-    printf("%f \n",rotations_ms);
+    printf("Control: bus voltage: %f V current: %f mA temperature: %fC\n",bus_voltage_control,current_control,ambiental_temperature_control);
+    printf("Generator: bus voltage: %f V current: %f mA temperature: %fC\n",bus_voltage_generator,current_generator,ambiental_temperature_generator);
+    printf("Rotations: %f \n\n\n",rotations_ms);
 }
 
 void init_outsiders() {
@@ -66,8 +68,11 @@ void init_outsiders() {
     TMP117_INIT(TMP117_CONTROL);
     TMP117_INIT(TMP117_GENERATOR);  
     optocoupler_init();
-
-    // give enough time for components to wake up and transients to magically disappear
+    GET_INA219_REG(INA219_CONTROL,CONFIGURATION);
+    GET_INA219_REG(INA219_CONTROL,CALIBRATION);
+    GET_INA219_REG(INA219_GENERATOR,CONFIGURATION);
+    GET_INA219_REG(INA219_GENERATOR,CALIBRATION);   
+    // give enough time for components to wake up and transients to magically disappear, to fade away like my hopes and dreams :)))
     // just to make sure they have the time to update, shuold be much less but we arent rly in a worry :)
     _delay_ms(50); 
 }
@@ -78,7 +83,11 @@ void get_INA219_GENERATOR() {
 }
 
 void get_TMP117_GENERATOR() {
-    ambiental_temperature_control = TMP117_readTemperature(TMP117_GENERATOR);
+    ambiental_temperature_generator = TMP117_readTemperature(TMP117_GENERATOR);
+}
+
+void get_TMP117_CONTROL() {
+    ambiental_temperature_control = TMP117_readTemperature(TMP117_CONTROL);
 }
 
 void get_INA219_CONTROL() {
@@ -87,7 +96,7 @@ void get_INA219_CONTROL() {
 }
 
 void get_rotating_speed() {
-    rotations_ms = SAMPLING_RATE / (1.0 * cnt_edge_changed);
+    rotations_ms = SAMPLING_RATE / (1.0f * cnt_edge_changed);
 }
 
 void take_measurement() {

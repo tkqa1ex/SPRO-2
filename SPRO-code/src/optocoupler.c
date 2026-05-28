@@ -5,7 +5,7 @@
 #include <avr/interrupt.h>
 #include "constants.h"
 
-#define DBS_TIME (uint32_t)80000
+#define DBS_TIME (uint32_t)80
 #define  TIME_TICK_WITH_SCALAR (TIME_TICK * SCALAR)
 #define NUMBER_OF_HOLES 10
 #define ANGLE 360.0 / (NUMBER_OF_HOLES * 2)
@@ -29,11 +29,11 @@ ISR(PCINT0_vect)
     int curent_edge = ((PINB & (1 << PB0)) > 0);
     // check if rising edge(1) or decreasing(0)
     if (last_edge != curent_edge && actual_time - last_trigger > DBS_TIME){  
-        last_edge = curent_edge; 
-        if (last_edge) { // on rising edge the solid part stops
+        if (curent_edge) { // on rising edge the solid part stops
             time_on = actual_time - last_trigger;
             ++cnt_edge_changed;
         }
+        last_edge = curent_edge; 
         last_trigger = actual_time;
     }
 }
@@ -41,10 +41,11 @@ void optocoupler_init() {
     DDRB &= ~(1 << PB0); 
 
     // enable pin to catch changing edges
-    PCICR |= (1 << PCIE0); // enable for PCINT0
+    PCICR |= (1 << PCIE0); // enable for PCINT0 group
     PCMSK0 |= (1 << PCINT0); // select PCINT0 (PB0) -> interrupt for changing edge 
 
     // init timer1 with 1024 prescalar => rouhgly once every 4.2secs
     // if needed more time just modify the top
     TCCR1B |= (1 << CS10) | (1 << CS12); // 1024 prescalar
+    TIMSK1 |= (1 << TOIE1);
 }

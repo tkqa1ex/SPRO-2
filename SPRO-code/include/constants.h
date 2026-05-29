@@ -2,7 +2,7 @@
 #define CONSTANTS_H
 
 // sensor addresses
-typedef enum { // efectiv creezi un tip nou, aaa si valoarea variabilei e ordinea nice
+typedef enum { 
     INA219_CONTROL = (uint8_t) 0b1000000,
     INA219_GENERATOR = (uint8_t) 0b1000001,
     TMP117_GENERATOR = (uint8_t) 0b1001001,
@@ -17,8 +17,8 @@ typedef enum { // efectiv creezi un tip nou, aaa si valoarea variabilei e ordine
 #define MAXIMUM_u8 ((uint16_t)255)
 #define SAMPLING_RATE (uint8_t) 275 // time in ms between measurements
 
-
-typedef enum { // efectiv creezi un tip nou, aaa si valoarea variabilei e ordinea nice
+// new pin type to select the load easily by the name of the actual pin
+typedef enum {
     D9,
     D10,
     D11,

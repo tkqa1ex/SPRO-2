@@ -41,21 +41,6 @@ void get_rotating_speed();
 // send data to the PC which reads it with matlab
 void send_data_to_matlab();
 
-ISR(TIMER2_OVF_vect) {
-    // every count is 1ms
-    timer++;
-    // to ensure the sampling rate
-    if (timer == SAMPLING_RATE) {
-        timer = 0;
-        take_data = true;
-    }
-}
-
-ISR(TIMER1_OVF_vect) {
-    // every count is around 4.2s
-    cnt_timer_overflow++;
-}
-
 int main() {
     // initialise the system whilst also opening pin D9
     system_init(D9);
@@ -92,12 +77,13 @@ void init_outsiders() {
     TMP117_INIT(TMP117_GENERATOR);  
     // if optocoupler needed
     //optocoupler_init();
+
     // was to debug and make sure the config has the right value
     // GET_INA219_REG(INA219_CONTROL,CONFIGURATION);
     // GET_INA219_REG(INA219_GENERATOR,CONFIGURATION);
 
     // give enough time for components to wake up and transients to magically disappear, to fade away like my hopes and dreams :)))
-    // just to make sure they have the time to update, shuold be much less but we arent rly in a worry :)
+    // just to make sure they have the time to update, shuold be much less but we arent rly in a worry
     _delay_ms(5); 
 }
 
@@ -144,7 +130,8 @@ void init_timer2() {
 }
 
 void system_init(pin LOAD) {
-    sei(); // enable interrupts
+    // enable interrupts
+    sei(); 
 
     // debug + sending to matlab
     uart_init();
@@ -169,5 +156,21 @@ void OPEN(pin LOAD) {
     PORTB |= (1 << (LOAD + 1));
 }
 
+// interrupts used for time counting
+ISR(TIMER2_OVF_vect) {
+    // every count is 1ms
+    timer++;
+    // to ensure the sampling rate
+    if (timer == SAMPLING_RATE) {
+        timer = 0;
+        take_data = true;
+    }
+}
 
+
+// if the optocoupler is used, this one is off
+ISR(TIMER1_OVF_vect) {
+    // every count is around 4.2s
+    cnt_timer_overflow++;
+}
 

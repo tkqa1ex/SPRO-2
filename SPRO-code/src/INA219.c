@@ -6,47 +6,45 @@
 #include "INA219.h"
 
 
-// initialise the INA219 controller
+// initialise the INA219 on the controller
 void INA219_INIT_CONTROL() {
     // configuration reg
     i2c_start_wait(get_adress(INA219_CONTROL,0));
+    // register to be accessed in reading mode
     i2c_write(CONFIGURATION);
+
+    // sending the 2 byte data
     i2c_write(INA219_CONTROL_CONFIG_REG_R);
     i2c_write(INA219_CONTROL_CONFIG_REG_L);
 
-    //i2c_write_16bit_reg(INA219_CONTROL_CONFIG_REG_R,INA219_CONTROL_CONFIG_REG_L); 
-
-    // // calibration reg
-    // i2c_rep_start(get_adress(INA219_CONTROL,0));
-    // i2c_write(CALIBRATION);
-    // i2c_write(INA219_CONTROL_CALIB_REG_R);
-    // i2c_write(INA219_CONTROL_CALIB_REG_L);
-
+    // stoping the communication
     i2c_stop();
 }
 
+// initialise the INA219 on the generator
 void INA219_INIT_GENERATOR() {
     // configuration reg
     i2c_start_wait(get_adress(INA219_GENERATOR,0));
+    // register to be accessed in reading mode
     i2c_write(CONFIGURATION); 
+
+    // sending the 2 byte data
     i2c_write(INA219_GENERATOR_CONFIG_REG_R);
     i2c_write(INA219_GENERATOR_CONFIG_REG_L);
 
-    // // calibration reg
-    // i2c_rep_start(get_adress(INA219_GENERATOR,0));
-    // i2c_write(CALIBRATION);
-    // i2c_write(INA219_GENERATOR_CALIB_REG_R);
-    // i2c_write(INA219_GENERATOR_CALIB_REG_L);
-
+    // stoping the communication
     i2c_stop();
 }
 
 
 // generally used for debugging purposes
+// to select the sensor to read from (slave_address) and the register address (reg)
 void GET_INA219_REG(SLAVE_ADDRESS slave_address,register_address reg) {
     i2c_start_wait(get_adress(slave_address,0));
+    // register to be accessed in reading mode
     i2c_write(reg);
     
+    // start communication in reading mode
     i2c_rep_start(get_adress(slave_address,1));
     uint8_t bus_R = i2c_readAck();
     uint8_t bus_L = i2c_readNak();
@@ -54,47 +52,70 @@ void GET_INA219_REG(SLAVE_ADDRESS slave_address,register_address reg) {
     printf("%x%x\n",bus_R,bus_L);
 }
 
+// get the current from thec control circuit
 float GET_CURRENT_CONTROL() {
+    // wake-up the IN219 sensor from the control board
     i2c_start_wait(get_adress(INA219_CONTROL,0));
+    // acces the SHUNT VOLTAGE register
     i2c_write(SHUNT_VOLTAGE);
 
+    // start communication in reading mode
     i2c_rep_start(get_adress(INA219_CONTROL,1));
     int8_t shunt_R = i2c_readAck();
     int8_t shunt_L = i2c_readNak();
     i2c_stop();
+    // data recevied from the sensor
     int16_t shunt_voltage = ((int16_t)shunt_R << 8) + shunt_L;
-    float value = shunt_voltage * LSB_SHUNT / SHUNT_R_CONTROL;
-    value *= 0.001; // in mA
-    return value;
+
+    // use Ohms law to calculate the current = V / R
+    // that value needs to be multipled by the resolution of the SHUNT reading (LSB SHUNT)
+    float current = shunt_voltage / SHUNT_R_CONTROL * LSB_SHUNT;
+    current *= 0.001; // in mA
+    return current;
 }
 
+// get the current from the generator circuit
 float GET_CURRENT_GENERATOR() {
+    // wake up the INA219 from the generator
     i2c_start_wait(get_adress(INA219_GENERATOR,0));
+    // register to be accessed in reading mode
     i2c_write(SHUNT_VOLTAGE);
 
+    // start communication in reading mode
     i2c_rep_start(get_adress(INA219_GENERATOR,1));
     int8_t shunt_R = i2c_readAck();
     int8_t shunt_L = i2c_readNak();
     i2c_stop();
+    // data recevied from the sensor
     int16_t shunt_voltage = ((int16_t)shunt_R << 8) + shunt_L;
-    // printf("%" PRIu16"\n",current);
-    float value = shunt_voltage * LSB_SHUNT / SHUNT_R_GENERATOR;
-    value *= 0.001; // in mA
-    return value;
+
+    // use Ohms law to calculate the current = V / R
+    // that value needs to be multipled by the resolution of the SHUNT reading (LSB SHUNT)
+    float current = shunt_voltage / SHUNT_R_GENERATOR * LSB_SHUNT;
+    current *= 0.001; // in mA
+    return current;
 }
 
+// get the voltage across the motor/generator (depending on the slave that is called)
 float GET_BUS_VOLTAGE(SLAVE_ADDRESS slave) {
+    // wake-up the slave
     i2c_start_wait(get_adress(slave,0));
+    // register to be accessed in reading mode
     i2c_write(BUS_VOLTAGE);
 
     
+    // start communication in reading mode
     i2c_rep_start(get_adress(slave,1));
     uint8_t bus_R = i2c_readAck();
-    uint8_t bus_L = i2c_readNak();
+    uint8_t bus_L = i2c_readNak(); 
+    // stop transmission
     i2c_stop();
+
+    // data recevied from the sensor
     uint16_t bus = (bus_R << 8) + bus_L;
     bus >>= 3; // needs to be shifted right by 3 bits
 
+    // multiply by the resolution for the BUS VOLTAGE(LSB_BV)
     float bus_voltage = bus * LSB_BV;
     bus_voltage *= 0.000001f;
     return bus_voltage;

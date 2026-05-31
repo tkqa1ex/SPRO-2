@@ -6,13 +6,14 @@
 #include <string.h>
 #include "usart.h"
 
-#define DBS_TIME (uint32_t)80000
+#define DBS_TIME (uint32_t)10000
 
-float PWM_FAN = 0.5;
-float PWM_HEATING_PAD = 0.25;
+volatile float PWM_FAN = 0.5;
+volatile float PWM_HEATING_PAD = 0.25;
 volatile uint32_t last_fan_button_press,last_heating_pad_button_press;
 volatile uint16_t tovf_cnt,fan_adc,heating_pad_adc;
 volatile uint8_t last_fan_edge = 1,last_heating_pad_edge = 1,adc_conversion_complete;
+volatile uint8_t change_pwm_fan = 1,change_pwm_heating_pad = 1;
 
 // implement 2 pwms (hai T0 si T2 sa aiba aceeasi durata)
 // check they work
@@ -29,35 +30,52 @@ void read_new_ADC();
 uint16_t read_adc(int);
 
 int main() {
-    uart_init();
-    io_redirect();
-    printf("Started\n");
     arduino_init();
     while (1) {
+        // read the new voltages to figure out position of the pot
+        // and change the pwm accordingly
         read_new_ADC();
         adjust_PWM();
         _delay_ms(300);
     }
 }
 
-
+// same structure for the PCINT2 ISR
 ISR(PCINT0_vect) {
+    // the real time at the time this interrupt was triggered
     uint32_t actual_time = ((uint32_t)tovf_cnt << 16) + TCNT1;
+
+    // find what type of change has occured (1 means rising, 0 is falling)
     uint8_t current_edge = 0;
     if (PINB & (1 << PB1)) {
         current_edge = 1;
     }
-    // on a falling edge
+
+    // only process the interrupt when the edge actually changes
+    // noise can sometimes toggle the signal extremely quickly.
+    //
+    // for example
+    // - last valid edge was HIGH
+    // - noise briefly causes HIGH -> LOW -> HIGH within a few us
+    // the temporary LOW transition is ignored by the debounce filter because it
+    // occurs too soon after the previous HIGH edge. However, the second HIGH may
+    // arrive later and still trigger a pin-change interrupt even though the
+    // logical edge state never truly changed.
     if (last_fan_edge != current_edge) {
+        // if it is on a rising edge and the time since the last press is more than the DBS_TIME 
         if (last_fan_edge == 1 && actual_time - last_fan_button_press >= DBS_TIME) {
             last_fan_button_press = actual_time;
-            if (OCR0B == 0) {
-                OCR0B = PWM_HEATING_PAD * 0xFF;
+            if (change_pwm_fan == 0) {
+                change_pwm_fan = 1;
+                OCR0B = PWM_FAN * 0xFF;
+                TCCR0B |= (1 << CS01) | (1 << CS00); 
             } else {
+                change_pwm_fan = 0;
                 OCR0B = 0;
+                TCCR0B = 0;
             }
         }
-    last_fan_edge = current_edge;
+        last_fan_edge = current_edge;
     }
 }
 
@@ -67,13 +85,17 @@ ISR(PCINT2_vect) {
     if (PIND & (1 << PD6)) {
         current_edge = 1;
     }
-    if (actual_time - last_heating_pad_button_press >= DBS_TIME && last_heating_pad_edge != current_edge) {
-        if (last_heating_pad_edge == 1) {
+    if (last_heating_pad_edge != current_edge) {
+        if (last_heating_pad_edge == 1 && actual_time - last_heating_pad_button_press >= DBS_TIME) {
             last_heating_pad_button_press = actual_time;
-            if (OCR2B == 0) {
-                OCR2B = PWM_FAN * 0xFF;
+            if (change_pwm_heating_pad == 0) {
+                change_pwm_heating_pad = 1;
+                TCCR2B |= (1 << CS22);
+                OCR2B = PWM_HEATING_PAD * 0xFF;
             } else {
+                change_pwm_heating_pad = 0;
                 OCR2B = 0;
+                TCCR2B = 0;
             }
         }
         last_heating_pad_edge = current_edge;
@@ -109,27 +131,34 @@ void adjust_PWM() {
 
 void set_heating_pad_PWM(float pwm) {
     PWM_HEATING_PAD = pwm;
-    OCR2B = 0xFF * pwm;
+    if (change_pwm_heating_pad) {
+        OCR2B = 0xFF * pwm;
+    }
 }
 
 void set_fan_PWM(float pwm) {
     PWM_FAN = pwm;
-    OCR0B = 0xFF * pwm;
+    if (change_pwm_fan) {
+        OCR0B = 0xFF * pwm;
+    }
 }
 
-void arduino_init() {
+void enable_ADC() {
     ADMUX |= (1 << REFS0);
     ADCSRA |= (1 << ADEN);
     ADCSRA |= (1 << ADPS2 | 1 << ADPS1 | 1 << ADPS0);
-    // ADCSRA reg to enable
-
     // ADC has a resolution of 10 bits with 5V as VREF => we can use a 1k pot to change the pwm, nice :)
-    // prescalar of 8, we get 32ms
-    // TCNT
+}
+
+void init_timer() {
+    // init timer1 with prescalar of 8 to get
+    // 32ms
     TCCR1B |= (1 << CS11);
     //TOVF niterrupt
     TIMSK1 |= (1 << TOIE1);
+}
 
+void set_up_pwms() {
     // use fast pwm + toggle on compare match
     // gonna use OC0B with clear on equal
     // setting for OC0B -> PD5, CHECKED, click of button also CHECKED
@@ -145,11 +174,12 @@ void arduino_init() {
     OCR2B = 0xFF * PWM_HEATING_PAD;
     TCCR2A |= (1 << COM2B1) | (1 << WGM21 | 1 << WGM20);
     TCCR2B |= (1 << CS22);
+}
 
-
+void set_up_edge_detection() {
     // gonna use PCINT22 (PD6-D6),PCINT1(PB1-D9) 
-    // 1 -> FAN
-    // 22 -> HEATING PAD
+    // 1 -> FAN (PB1)
+    // 22 -> HEATING PAD (PD6)
     DDRB &= ~(1 << PB1);
     DDRD &= ~(1 << PD6);
 
@@ -159,6 +189,18 @@ void arduino_init() {
     PCICR |= (1 << PCIE2) | (1 << PCIE0);
     PCMSK2 |= (1 << PCINT22);
     PCMSK0 |= (1 << PCINT1);
+}
+
+void arduino_init() {
+    // initialise the communication to the pc for debugging purposes mainly
+    uart_init();
+    io_redirect();
+
+    enable_ADC();
+    init_timer();
+    set_up_pwms();
+    set_up_edge_detection();
+    // enable interrupts
     sei();
 }
 

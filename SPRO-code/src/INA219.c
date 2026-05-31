@@ -8,7 +8,7 @@
 
 // initialise the INA219 on the controller
 void INA219_INIT_CONTROL() {
-    // configuration reg
+    // start the communication with the INA219 sensor from the control board in writing mode
     i2c_start_wait(get_adress(INA219_CONTROL,0));
     // register to be accessed in reading mode
     i2c_write(CONFIGURATION);
@@ -23,7 +23,7 @@ void INA219_INIT_CONTROL() {
 
 // initialise the INA219 on the generator
 void INA219_INIT_GENERATOR() {
-    // configuration reg
+    // start the communication with the INA219 sensor from the generator board in writing mode
     i2c_start_wait(get_adress(INA219_GENERATOR,0));
     // register to be accessed in reading mode
     i2c_write(CONFIGURATION); 
@@ -40,15 +40,23 @@ void INA219_INIT_GENERATOR() {
 // generally used for debugging purposes
 // to select the sensor to read from (slave_address) and the register address (reg)
 void GET_INA219_REG(SLAVE_ADDRESS slave_address,register_address reg) {
+    // start communication in write mode to 
+    // write in the pointer register the adress we want to read from
     i2c_start_wait(get_adress(slave_address,0));
-    // register to be accessed in reading mode
+    // send address of register to be accessed next in reading mode
     i2c_write(reg);
     
     // start communication in reading mode
     i2c_rep_start(get_adress(slave_address,1));
+
+    // register is 16 bits(2 bytes) so needs to read 2 bytes of data
     uint8_t bus_R = i2c_readAck();
     uint8_t bus_L = i2c_readNak();
+
+    // stop the communication
     i2c_stop();
+
+    // display the contentin hexadecimal
     printf("%x%x\n",bus_R,bus_L);
 }
 

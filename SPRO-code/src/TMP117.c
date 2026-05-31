@@ -28,7 +28,7 @@ static uint16_t TMP117_readRegister(uint8_t addr, uint8_t reg)
 }
 
 //initialization
-void TMP117_init(uint8_t addr)
+void TMP117_INIT(uint8_t addr)
 {
     //write to configuration register (0x01) -> value: 0x0220
     //binary: 0000 0010 0010 0000

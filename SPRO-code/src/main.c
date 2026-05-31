@@ -9,16 +9,16 @@
 #include "constants.h"
 #include "INA219.h"
 #include "TMP117.h"
-#include "optocoupler.h"
 
-volatile uint8_t timer;
+volatile uint8_t counter,stop_sending_data;
+volatile uint64_t timer;
 
 // flag which makes sure the sampling rate is mantained 
-volatile uint8_t take_data;
+volatile uint8_t take_data,stop_sending_data;
 
 // for the data from the sensors
 float bus_voltage_control,bus_voltage_generator,current_control,current_generator,
-ambiental_temperature_control,ambiental_temperature_generator,rotations_ms;
+ambiental_temperature_control,ambiental_temperature_generator;
 
 
 
@@ -36,7 +36,6 @@ void get_TMP117_CONTROL();
 void get_TMP117_GENERATOR();
 void get_INA219_GENERATOR();
 void get_INA219_CONTROL();
-void get_rotating_speed();
 
 // send data to the PC which reads it with matlab
 void send_data_to_matlab();
@@ -62,11 +61,9 @@ void send_data_to_matlab() {
     // Sending to the PC data as follows
     // voltage control, current control, control temp
     // voltage generator, current generator, gen temp
-    // rpms
     printf("Control: bus voltage: %f V current: %f mA temperature: %fC\n",bus_voltage_control,current_control,ambiental_temperature_control);
     printf("Generator: bus voltage: %f V current: %f mA temperature: %fC\n",bus_voltage_generator,current_generator,ambiental_temperature_generator);
-    printf("Rotations: %f \n\n\n",rotations_ms);
-    cnt_edge_changed = 0;
+    printf("Loop flag: %u",stop_sending_data);
 }
 
 // init sensors
@@ -74,14 +71,7 @@ void init_outsiders() {
     INA219_INIT_CONTROL();
     INA219_INIT_GENERATOR();
     TMP117_INIT(TMP117_CONTROL);
-    TMP117_INIT(TMP117_GENERATOR);  
-    // if optocoupler needed
-    //optocoupler_init();
-
-    // was to debug and make sure the config has the right value
-    // GET_INA219_REG(INA219_CONTROL,CONFIGURATION);
-    // GET_INA219_REG(INA219_GENERATOR,CONFIGURATION);
-
+    TMP117_INIT(TMP117_GENERATOR);
     // give enough time for components to wake up and transients to magically disappear, to fade away like my hopes and dreams :)))
     // just to make sure they have the time to update, shuold be much less but we arent rly in a worry
     _delay_ms(5); 
@@ -109,10 +99,6 @@ void get_INA219_CONTROL() {
     current_control = GET_CURRENT_CONTROL();
 }
 
-// in case optocoupler is needed for rpm
-void get_rotating_speed() {
-    rotations_ms = SAMPLING_RATE / (1.0f * cnt_edge_changed);
-}
 
 // get the data from the sensors to the mcu
 void take_measurement() {
@@ -120,11 +106,11 @@ void take_measurement() {
     get_INA219_GENERATOR();
     get_TMP117_CONTROL();
     get_TMP117_GENERATOR();
-    get_rotating_speed();
 }
 
 void init_timer2() {
     // SCALAR OF 64, lasts 1ms
+    // works in normal mode (it is the default) and its just a counter that gets back to 0 once it reaches max (0xFF)
     TIMSK2 |= (1 << TOIE2);
     TCCR2B |= (1 << CS22); 
 }
@@ -159,18 +145,16 @@ void OPEN(pin LOAD) {
 // interrupts used for time counting
 ISR(TIMER2_OVF_vect) {
     // every count is 1ms
+    counter++;
     timer++;
     // to ensure the sampling rate
-    if (timer == SAMPLING_RATE) {
-        timer = 0;
+    if (counter == SAMPLING_RATE) {
+        counter = 0;
         take_data = true;
+    }
+    if (timer == TESTING_TIME) {
+        stop_sending_data = 1;
     }
 }
 
-
-// if the optocoupler is used, this one is off
-ISR(TIMER1_OVF_vect) {
-    // every count is around 4.2s
-    cnt_timer_overflow++;
-}
 

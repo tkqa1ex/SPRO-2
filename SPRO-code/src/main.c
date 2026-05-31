@@ -10,7 +10,7 @@
 #include "INA219.h"
 #include "TMP117.h"
 
-volatile uint8_t counter,stop_sending_data;
+volatile uint16_t counter;
 volatile uint64_t timer;
 
 // flag which makes sure the sampling rate is mantained 
@@ -61,9 +61,14 @@ void send_data_to_matlab() {
     // Sending to the PC data as follows
     // voltage control, current control, control temp
     // voltage generator, current generator, gen temp
-    printf("Control: bus voltage: %f V current: %f mA temperature: %fC\n",bus_voltage_control,current_control,ambiental_temperature_control);
-    printf("Generator: bus voltage: %f V current: %f mA temperature: %fC\n",bus_voltage_generator,current_generator,ambiental_temperature_generator);
-    printf("Loop flag: %u",stop_sending_data);
+    printf("%.2f %.2f %.2f %.2f %.2f %.2f %d\n",bus_voltage_control,current_control,ambiental_temperature_control,
+        bus_voltage_generator,current_generator,ambiental_temperature_generator,
+        stop_sending_data);
+
+    // FOR DEBUGGING
+    // printf("Control: bus voltage: %f V current: %f mA temperature: %fC\n",bus_voltage_control,current_control,ambiental_temperature_control);
+    // printf("Generator: bus voltage: %f V current: %f mA temperature: %fC\n",bus_voltage_generator,current_generator,ambiental_temperature_generator);
+    // printf("Loop flag: %u\n\n",stop_sending_data);
 }
 
 // init sensors

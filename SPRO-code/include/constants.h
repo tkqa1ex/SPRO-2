@@ -15,8 +15,8 @@ typedef enum {
 #define MAXIMUM_u32 (uint64_t)4294967295
 #define MAXIMUM_u16 ((uint32_t)65535)
 #define MAXIMUM_u8 ((uint16_t)255)
-#define SAMPLING_RATE (uint8_t) 275 // time in ms between measurements
-#define TESTING_TIME (uint64_t) 3UL * 60UL * 1000UL // 5 minutes
+#define SAMPLING_RATE (uint16_t) 250// time in ms between measurements
+#define TESTING_TIME (uint64_t) 5UL * 60UL * 1000UL // 5 minutes
 
 // new pin type to select the load easily by the name of the actual pin
 typedef enum {
